@@ -472,13 +472,218 @@ section {
 }
 
 .resume .resume-item h4 {
-  line-height: 18px;
+  line-height: 1.45;
   font-size: 18px;
   font-weight: 600;
   text-transform: uppercase;
   font-family: "Poppins", sans-serif;
   color: #050d18;
   margin-bottom: 10px;
+}
+
+/* CV content and download actions */
+#hero {
+  position: relative;
+  min-height: 620px;
+}
+
+#hero .hero-container {
+  width: min(100%, 1040px);
+  min-width: 0;
+  padding: 24px;
+}
+
+#hero h1 {
+  font-size: clamp(32px, 4vw, 56px);
+  line-height: 1.15;
+}
+
+#hero p {
+  margin-bottom: 24px;
+  font-size: clamp(18px, 2.2vw, 26px);
+  min-height: 2.8em;
+}
+
+.hero-credentials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.hero-credentials span {
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 24px;
+  color: #fff;
+  background: rgba(4, 11, 20, 0.65);
+}
+
+.cv-download {
+  padding: 11px 20px;
+  background: #087ba9;
+  border: 1px solid #087ba9;
+  color: #fff;
+  font-weight: 600;
+}
+
+.cv-download:hover,
+.cv-download:focus {
+  background: #08658b;
+  border-color: #08658b;
+  color: #fff;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid #149ddd;
+  outline-offset: 4px;
+}
+
+.about .content .profile-details li {
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.profile-details a,
+.contact .info a {
+  overflow-wrap: anywhere;
+}
+
+.credential-card,
+.experience-card,
+.contact-actions {
+  height: 100%;
+  padding: 30px;
+  background: #fff;
+  border: 1px solid #e1e9f2;
+  border-radius: 8px;
+}
+
+.credential-card > i {
+  display: block;
+  color: #087ba9;
+  font-size: 40px;
+  margin-bottom: 16px;
+}
+
+.credential-card h3,
+.experience-card h3,
+.contact-actions h3 {
+  font-size: 21px;
+  line-height: 1.4;
+  font-weight: 700;
+  color: #173b6c;
+}
+
+.credential-card p,
+.experience-card p {
+  margin-bottom: 0;
+}
+
+.skill-list {
+  padding-left: 0;
+  list-style: none;
+}
+
+.skill-list li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.skill-list i {
+  flex-shrink: 0;
+  color: #087ba9;
+}
+
+.resume .employer {
+  font-weight: 600;
+  color: #173b6c;
+}
+
+.resume-download {
+  margin: 28px 0;
+}
+
+.experience-card {
+  min-height: 300px;
+}
+
+.experience-card > a {
+  display: inline-block;
+  margin-top: 18px;
+}
+
+.company-mark {
+  display: flex;
+  align-items: center;
+  height: 84px;
+  margin-bottom: 20px;
+}
+
+.company-mark img {
+  max-height: 84px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.company-mark > i {
+  font-size: 48px;
+  color: #087ba9;
+}
+
+.portfolio #portfolio-flters li {
+  padding: 0;
+}
+
+.portfolio #portfolio-flters button {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  padding: 12px;
+}
+
+.contact .info {
+  height: 100%;
+}
+
+.contact .info h3 {
+  padding-left: 60px;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #050d18;
+}
+
+.contact-actions .btn-outline-secondary {
+  padding: 11px 20px;
+}
+
+@media (min-width: 1200px) {
+  #hero {
+    margin-left: 300px;
+    width: calc(100% - 300px);
+  }
+}
+
+@media (max-width: 575px) {
+  .portfolio #portfolio-flters {
+    padding: 2px 6px;
+  }
+
+  .portfolio #portfolio-flters button {
+    padding: 12px 9px;
+    font-size: 12px;
+  }
+
+  .credential-card,
+  .experience-card,
+  .contact-actions {
+    padding: 24px;
+  }
 }
 
 .resume .resume-item h5 {
