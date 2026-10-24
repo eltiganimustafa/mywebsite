@@ -226,68 +226,125 @@ h6 {
 # Hero Section
 --------------------------------------------------------------*/
 #hero {
+  position: relative;
+  min-height: 100svh;
+  height: auto;
   width: 100%;
-  height: 100vh;
-  background: url("../img/hero-bg.jpg") top center;
-  background-size: cover;
-}
-
-#hero:before {
-  content: "";
-  background: rgba(5, 13, 24, 0.3);
-  position: absolute;
-  bottom: 0;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1;
+  padding: 80px 0;
+  color: #fff;
+  background: radial-gradient(ellipse at top right, #17445a, transparent 65%), #0c1b2b;
 }
 
 #hero .hero-container {
-  position: relative;
-  z-index: 2;
-  min-width: 300px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.8fr);
+  align-items: center;
+  gap: 40px;
+  width: min(100%, 1120px);
+  min-width: 0;
+  margin: auto;
+  padding: 24px 40px;
 }
 
 #hero h1 {
-  margin: 0 0 10px 0;
-  font-size: 64px;
+  margin: 0 0 20px;
+  font-size: clamp(36px, 4vw, 58px);
+  line-height: 1.12;
   font-weight: 700;
-  line-height: 56px;
   color: #fff;
 }
 
-#hero p {
+#hero h1 span { color: #79d0e8; }
+
+#hero .hero-eyebrow {
+  margin: 0 0 24px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  line-height: 1.7;
+  color: #9ed8e7;
+}
+
+#hero .hero-role {
+  font-size: 17px;
+  color: #d8e6ed;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+#hero .hero-summary {
+  font-size: clamp(19px, 2vw, 23px);
+  line-height: 1.65;
   color: #fff;
-  margin-bottom: 50px;
-  font-size: 26px;
-  font-family: "Poppins", sans-serif;
+  margin-bottom: 24px;
+  max-width: 580px;
 }
 
-#hero p span {
-  color: #fff;
-  padding-bottom: 4px;
-  letter-spacing: 1px;
-  border-bottom: 3px solid #149ddd;
+.hero-credentials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 28px;
 }
 
-@media (min-width: 1024px) {
-  #hero {
-    background-attachment: fixed;
-  }
+.hero-credentials > * {
+  border: 1px solid #547283;
+  border-radius: 24px;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: #e9f5f9;
 }
 
-@media (max-width: 768px) {
-  #hero h1 {
-    font-size: 28px;
-    line-height: 36px;
-  }
+.hero-credentials a:hover { color: #fff; border-color: #79d0e8; }
 
-  #hero h2 {
-    font-size: 18px;
-    line-height: 24px;
-    margin-bottom: 30px;
-  }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.hero-contact {
+  padding: 11px 20px;
+  background: #fff;
+  border: 1px solid #fff;
+  color: #0c1b2b;
+  font-weight: 700;
+}
+
+.hero-contact:hover,
+.hero-contact:focus { background: #d5f1f8; color: #0c1b2b; }
+
+#hero .cv-download { background: transparent; color: #fff; border-color: #88afc0; }
+#hero .cv-download:hover { background: #17445a; }
+
+.hero-portrait { margin: 0; }
+
+.hero-portrait img {
+  width: 100%;
+  height: auto;
+  max-height: 480px;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 160px 160px 20px 20px;
+  border: 5px solid rgba(121, 208, 232, 0.25);
+}
+
+.hero-portrait figcaption {
+  margin-top: 18px;
+  font-size: 13px;
+  color: #b9d1df;
+  text-align: center;
+  line-height: 1.5;
+}
+
+#header .profile img { aspect-ratio: 1; object-fit: cover; object-position: center 28%; }
+
+@media (max-width: 991px) {
+  #hero .hero-container { padding: 24px; gap: 24px; }
+}
+
+@media (max-width: 699px) {
+  #hero { padding: 86px 0 48px; }
+  #hero .hero-container { grid-template-columns: 1fr; gap: 36px; }
+  #hero h1 { font-size: 40px; }
+  .hero-portrait { width: min(100%, 260px); margin: auto; }
+  .hero-portrait img { max-height: 320px; }
 }
 
 /*--------------------------------------------------------------
@@ -472,13 +529,181 @@ section {
 }
 
 .resume .resume-item h4 {
-  line-height: 18px;
+  line-height: 1.45;
   font-size: 18px;
   font-weight: 600;
   text-transform: uppercase;
   font-family: "Poppins", sans-serif;
   color: #050d18;
   margin-bottom: 10px;
+}
+
+/* CV content and download actions */
+.cv-download {
+  padding: 11px 20px;
+  background: #087ba9;
+  border: 1px solid #087ba9;
+  color: #fff;
+  font-weight: 600;
+}
+
+.cv-download:hover,
+.cv-download:focus {
+  background: #08658b;
+  border-color: #08658b;
+  color: #fff;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid #149ddd;
+  outline-offset: 4px;
+}
+
+.about .content .profile-details li {
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.profile-details a,
+.contact .info a {
+  overflow-wrap: anywhere;
+}
+
+.credential-card,
+.experience-card,
+.contact-actions {
+  height: 100%;
+  padding: 30px;
+  background: #fff;
+  border: 1px solid #e1e9f2;
+  border-radius: 8px;
+}
+
+.credential-card > i {
+  display: block;
+  color: #087ba9;
+  font-size: 40px;
+  margin-bottom: 16px;
+}
+
+.credential-card h3,
+.experience-card h3,
+.contact-actions h3 {
+  font-size: 21px;
+  line-height: 1.4;
+  font-weight: 700;
+  color: #173b6c;
+}
+
+.credential-card p,
+.experience-card p {
+  margin-bottom: 0;
+}
+
+.skill-list {
+  padding-left: 0;
+  list-style: none;
+}
+
+.skill-list li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.skill-list i {
+  flex-shrink: 0;
+  color: #087ba9;
+}
+
+.resume .employer {
+  font-weight: 600;
+  color: #173b6c;
+}
+
+.resume-download {
+  margin: 28px 0;
+}
+
+.experience-card {
+  min-height: 300px;
+}
+
+.experience-card > a {
+  display: inline-block;
+  margin-top: 18px;
+}
+
+.company-mark {
+  display: flex;
+  align-items: center;
+  height: 84px;
+  margin-bottom: 20px;
+}
+
+.company-mark img {
+  max-height: 84px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.company-mark > i {
+  font-size: 48px;
+  color: #087ba9;
+}
+
+.portfolio #portfolio-flters li {
+  padding: 0;
+}
+
+.portfolio #portfolio-flters button {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  padding: 12px;
+}
+
+.contact .info {
+  height: 100%;
+}
+
+.contact .info h3 {
+  padding-left: 60px;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #050d18;
+}
+
+.contact-actions .btn-outline-secondary {
+  padding: 11px 20px;
+}
+
+@media (min-width: 1200px) {
+  #hero {
+    margin-left: 300px;
+    width: calc(100% - 300px);
+  }
+}
+
+@media (max-width: 575px) {
+  .portfolio #portfolio-flters {
+    padding: 2px 6px;
+  }
+
+  .portfolio #portfolio-flters button {
+    padding: 12px 9px;
+    font-size: 12px;
+  }
+
+  .credential-card,
+  .experience-card,
+  .contact-actions {
+    padding: 24px;
+  }
 }
 
 .resume .resume-item h5 {
@@ -1101,4 +1326,55 @@ section {
     width: auto;
     padding-right: 20px 15px;
   }
+}
+
+/* Experience, qualifications, and supporting credentials */
+.about-photo { width: 100%; max-height: 420px; object-fit: cover; border-radius: 8px; }
+.founder-note { margin: 16px 0 24px; padding: 14px 18px; border-left: 3px solid #087ba9; background: #f5f8fd; }
+.credential-link { display: inline-block; margin-top: 22px; font-weight: 600; color: #08658b; }
+.credential-card .credential-meta { margin-top: 18px; font-size: 13px; color: #526579; line-height: 1.7; }
+.experience-timeline { display: grid; gap: 20px; }
+.experience-entry { background: #fff; border: 1px solid #e1e9f2; border-radius: 10px; padding: 28px; scroll-margin-top: 24px; }
+.experience-heading { display: grid; grid-template-columns: 72px minmax(0, 1fr) auto; gap: 20px; align-items: start; margin-bottom: 20px; }
+.experience-logo { display: flex; align-items: center; justify-content: center; min-height: 64px; }
+.experience-logo img { width: 100%; max-height: 72px; object-fit: contain; }
+.experience-logo > i { font-size: 36px; color: #087ba9; }
+.experience-heading h3 { font-size: 20px; font-weight: 700; line-height: 1.45; color: #173b6c; margin: 0 0 6px; }
+.experience-heading .employer { margin-bottom: 4px; }
+.experience-location { margin: 0; color: #526579; font-size: 14px; line-height: 1.6; }
+.experience-dates { margin: 0; padding: 7px 12px; border-radius: 4px; background: #eaf2fa; color: #173b6c; font-size: 13px; font-weight: 600; white-space: nowrap; }
+.experience-highlights,
+.experience-details { margin-left: 92px; margin-bottom: 0; }
+.experience-highlights,
+.experience-details ul { padding-left: 20px; }
+.experience-entry li { padding-bottom: 8px; line-height: 1.7; }
+.experience-details { margin-top: 12px; }
+.experience-details summary { width: fit-content; cursor: pointer; padding: 8px 0; font-weight: 600; color: #08658b; }
+.experience-details ul { margin-top: 14px; margin-bottom: 0; }
+.qualification-card { height: 100%; padding: 28px; border: 1px solid #e1e9f2; border-radius: 10px; background: #fff; }
+.qualification-card h3,
+.qualification-card .resume-title { color: #173b6c; font-size: 23px; font-weight: 700; margin: 0 0 28px; }
+.qualification-card > ul { padding-left: 20px; margin-bottom: 0; }
+.qualification-card > ul li { padding-bottom: 18px; line-height: 1.7; }
+.testimonial-context { max-width: 320px; margin: 14px auto 0; padding: 0 10px; color: #526579; font-size: 13px; line-height: 1.6; }
+.company-mark a { display: flex; align-items: center; height: 100%; max-width: 100%; }
+
+@media (max-width: 991px) {
+  .experience-heading { grid-template-columns: 64px minmax(0, 1fr); gap: 14px; }
+  .experience-dates { grid-column: 2; justify-self: start; }
+  .experience-highlights,
+  .experience-details { margin-left: 78px; }
+}
+
+@media (max-width: 575px) {
+  .experience-entry,
+  .qualification-card { padding: 22px 18px; }
+  .experience-heading { grid-template-columns: 48px minmax(0, 1fr); gap: 12px; }
+  .experience-heading h3 { font-size: 18px; }
+  .experience-highlights,
+  .experience-details { margin-left: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
 }
