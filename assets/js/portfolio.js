@@ -26,7 +26,7 @@
     visual.className = 'typed-role';
     visual.textContent = original;
     role.replaceChildren(accessible, visual);
-    const titles = ['Odoo ERP Specialist', 'Business Analyst', 'PMP® Certified Professional', 'Odoo Techno-Functional Consultant'];
+    const titles = ['Odoo ERP Specialist', 'Business Analyst', 'Odoo Techno-Functional Consultant'];
     let timer;
     let index = 0;
     let length = titles[0].length;

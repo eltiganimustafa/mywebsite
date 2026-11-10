@@ -77,7 +77,7 @@ summary::-webkit-details-marker { display: none; }
 .hero .eyebrow { color: #d4d0e5; font-size: 12px; margin-bottom: 13px; }
 .location-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--yellow); margin: 0 8px 1px 0; }
 .hero h1 { font-size: 42px; line-height: 1.18; letter-spacing: -1.5px; font-weight: 800; margin-bottom: 15px; }
-.hero h1 > span { display: block; font-size: 29px; margin-top: 4px; }
+.hero h1 > span { display: block; font-size: inherit; font-weight: inherit; margin-top: 4px; }
 .hero-role { display: flex; align-items: center; justify-content: center; min-height: 3.2em; font-size: 16px; margin: 0 auto 13px; }
 .typed-role { max-width: 100%; overflow-wrap: anywhere; }
 .is-typing .typed-role::after { content: ''; display: inline-block; width: 2px; height: 1em; background: var(--yellow); vertical-align: -.12em; margin-left: 4px; animation: typing-caret 1s steps(1) infinite; }
@@ -109,9 +109,9 @@ summary::-webkit-details-marker { display: none; }
 .organization-inner > p { margin: 0; color: var(--muted); font-size: 13px; }
 .organization-inner strong { color: var(--ink); }
 .organization-logos { display: grid; grid-template-columns: repeat(auto-fit, minmax(125px, 1fr)); gap: 14px; }
-.organization { min-width: 0; min-height: 128px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--line); border-radius: 12px; padding: 8px; background: #fff; }
+.organization { min-width: 0; min-height: 178px; margin: 0; display: flex; flex-direction: column; align-items: center; justify-content: start; gap: 12px; border: 1px solid var(--line); border-radius: 12px; padding: 14px 10px; background: #fff; }
 .organization img { width: 112px; height: 108px; object-fit: contain; }
-.organization:hover { border-color: #b9b1e2; }
+.organization figcaption { width: 100%; color: var(--ink); font-size: 12px; font-weight: 700; line-height: 1.6; text-align: center; overflow-wrap: anywhere; }
 
 /* About and expertise */
 .about-grid { display: grid; grid-template-columns: 190px minmax(0, 1fr); align-items: center; gap: 35px; }
@@ -184,6 +184,8 @@ summary::-webkit-details-marker { display: none; }
 .education-item .small-label { font-size: 12px; color: var(--muted); letter-spacing: 1px; }
 .education-item h3 { font-size: 18px; line-height: 1.6; margin: 12px 0; }
 .education-item p { font-size: 14px; color: var(--muted); margin-bottom: 0; }
+.training-group + .training-group { margin-top: 24px; }
+.training-group h3 { font-size: 16px; margin-bottom: 12px; color: var(--purple); }
 .training-list { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--line); }
 .training-list li { padding: 18px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
 
@@ -268,7 +270,7 @@ summary::-webkit-details-marker { display: none; }
   .portrait > img { width: 176px; height: 200px; border-radius: 23px; }
   .hero .portrait { border-radius: 30px; margin-bottom: 26px; }
   .hero h1 { font-size: 33px; }
-  .hero h1 > span { font-size: 25px; }
+
   .hero-role { font-size: 15px; }
   .hero-description { font-size: 14px; }
   .hero .eyebrow { font-size: 11px; }
@@ -281,7 +283,7 @@ summary::-webkit-details-marker { display: none; }
   .organization-inner > p br { display: none; }
   .organization-inner strong { margin-left: 4px; }
   .organization-logos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-  .organization { min-height: 136px; }
+  .organization { min-height: 180px; }
   .organization img { width: 118px; height: 114px; }
   .about-grid, .expertise-list, .credential-grid, .quote-grid, .qualification-grid, .contact-grid, .capability-content { grid-template-columns: 1fr; }
   .about-visual { width: 150px; justify-self: center; }
