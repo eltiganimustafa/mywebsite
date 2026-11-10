@@ -148,7 +148,7 @@ summary::-webkit-details-marker { display: none; }
 .competency-list span { color: var(--muted); margin-top: 5px; }
 
 /* Credentials and professional history */
-.credential-grid, .quote-grid, .qualification-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.credential-grid, .qualification-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
 .credential-card { display: flex; flex-direction: column; align-items: start; padding: 30px; border-radius: 20px; border-top: 4px solid var(--yellow); background: #fff; box-shadow: var(--shadow); }
 .odoo-card { border-top-color: #8b78f5; }
 .credential-top { display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 15px; margin-bottom: 30px; }
@@ -190,14 +190,36 @@ summary::-webkit-details-marker { display: none; }
 .training-list li { padding: 18px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
 
 /* Testimonials, contact and footer */
-.quote { display: flex; flex-direction: column; padding: 28px; margin: 0; border-radius: 20px; background: #fff; box-shadow: var(--shadow); }
-.quote > .bi { color: #997000; font-size: 38px; line-height: 1; margin-bottom: 16px; }
-.quote blockquote { font: 17px/2 system-ui, sans-serif; margin: 0 0 28px; }
-.quote figcaption { display: flex; align-items: center; gap: 12px; margin-top: auto; }
-.quote figcaption img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
-.quote figcaption strong { display: block; font-size: 14px; }
-.quote figcaption > span > span { display: block; margin-top: 5px; color: var(--muted); font-size: 13px; }
-.quote-context { color: var(--muted); font-size: 13px; margin: 18px 0 0; }
+/* Testimonials use natural-height columns, with authors above the original quotes. */
+.testimonials-section { background: linear-gradient(180deg, #efedf9 0%, var(--paper) 100%); }
+.testimonials-section .section-heading { margin-bottom: 44px; }
+.testimonials-section .section-heading h2 { font-size: 42px; }
+.testimonials-section .section-heading .muted { color: var(--purple); }
+.quote-grid { column-count: 2; column-gap: 24px; }
+.quote { position: relative; display: inline-flex; flex-direction: column; width: 100%; break-inside: avoid; vertical-align: top; padding: 30px; margin: 0 0 24px; border: 1px solid #e4e0f1; border-radius: 24px; background: #fff; box-shadow: 0 12px 32px #35335306; }
+.quote > .bi { position: absolute; right: 22px; top: 24px; color: #e6e1f8; font-size: 48px; line-height: 1; pointer-events: none; }
+.quote figcaption { position: relative; z-index: 1; display: flex; align-items: center; gap: 14px; padding-right: 25px; margin-bottom: 24px; }
+.quote figcaption img { width: 60px; height: 60px; flex-shrink: 0; border-radius: 50%; object-fit: cover; border: 3px solid #f2effb; }
+.quote figcaption strong { display: block; font-size: 15px; font-weight: 800; }
+.quote figcaption > span > span { display: block; margin-top: 5px; color: var(--muted); font-size: 12px; line-height: 1.7; }
+.quote blockquote { font: 18px/2.05 system-ui, sans-serif; color: var(--ink); text-align: start; margin: 0; padding-top: 22px; border-top: 1px solid #eeebf5; }
+.quote:first-child { background: var(--ink); border-color: var(--ink); box-shadow: 0 16px 34px #35335320; }
+.quote:first-child figcaption strong, .quote:first-child blockquote { color: #fff; }
+.quote:first-child figcaption > span > span { color: #d0cbe2; }
+.quote:first-child figcaption img { border-color: #ffffff30; }
+.quote:first-child > .bi { color: #ffd15c; opacity: .65; }
+.quote:first-child blockquote { border-top-color: #ffffff26; }
+.quote-context { color: var(--muted); font-size: 12px; line-height: 1.8; margin: 20px 0 0; padding-top: 16px; border-top: 1px dashed var(--line); }
+@media (max-width: 699px) {
+  .quote-grid { column-count: 1; }
+  .quote { padding: 25px; margin-bottom: 18px; border-radius: 20px; }
+  .quote figcaption { gap: 12px; padding-right: 16px; }
+  .quote figcaption img { width: 54px; height: 54px; }
+  .quote figcaption strong { font-size: 14px; }
+  .quote > .bi { right: 18px; font-size: 38px; }
+  .quote blockquote { font-size: 17px; }
+  .testimonials-section .section-heading h2 { font-size: 34px; }
+}
 .contact-section { background: var(--ink); color: #fff; }
 .contact-grid { display: grid; grid-template-columns: 1.1fr 1fr; align-items: end; gap: 40px; }
 .contact-grid h2 { font-size: 34px; margin-bottom: 25px; }
