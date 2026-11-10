@@ -70,8 +70,9 @@ summary::-webkit-details-marker { display: none; }
 /* Hero */
 .hero { position: relative; overflow: hidden; background: var(--ink); color: #fff; }
 .hero-grid { position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; min-height: 100svh; padding: 65px 0 30px; }
-.hero .portrait { margin: 0 0 23px; }
-.portrait > img { width: 154px; height: 154px; border-radius: 50%; object-fit: cover; object-position: 50% 27%; border: 7px solid var(--yellow); box-shadow: 0 0 0 12px #ffffff05; }
+.hero .portrait { position: relative; margin: 0 0 30px; padding: 6px; border: 1px solid #ffffff24; border-radius: 34px; background: linear-gradient(145deg, #ffffff24, #ffffff04); box-shadow: 0 20px 48px #17152640; }
+.portrait > img { width: 224px; height: 252px; border-radius: 27px; object-fit: cover; object-position: 50% 38%; }
+.hero .portrait::after { content: ""; position: absolute; width: 52px; height: 4px; bottom: -2px; left: calc(50% - 26px); border-radius: 4px; background: var(--yellow); }
 .hero-copy { width: 100%; }
 .hero .eyebrow { color: #d4d0e5; font-size: 12px; margin-bottom: 13px; }
 .location-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--yellow); margin: 0 8px 1px 0; }
@@ -264,7 +265,8 @@ summary::-webkit-details-marker { display: none; }
   .section-heading { display: block; margin-bottom: 32px; }
   .section-heading > p { max-width: 100%; margin-top: 20px; }
   .hero-grid { padding: 45px 0 28px; }
-  .portrait > img { width: 132px; height: 132px; }
+  .portrait > img { width: 176px; height: 200px; border-radius: 23px; }
+  .hero .portrait { border-radius: 30px; margin-bottom: 26px; }
   .hero h1 { font-size: 33px; }
   .hero h1 > span { font-size: 25px; }
   .hero-role { font-size: 15px; }
