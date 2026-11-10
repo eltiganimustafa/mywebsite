@@ -230,8 +230,6 @@
       }
       return button;
     }
-    const previous = makeButton('carousel-arrow', 'Previous testimonial', 'bi-chevron-left');
-    const next = makeButton('carousel-arrow', 'Next testimonial', 'bi-chevron-right');
     const rotation = makeButton('carousel-pause', '', 'bi-pause-fill');
     const dots = document.createElement('div');
     dots.className = 'carousel-dots';
@@ -254,9 +252,7 @@
       rotation.setAttribute('aria-label', paused ? 'Start automatic rotation' : 'Pause automatic rotation');
       rotation.firstElementChild.className = 'bi ' + (paused ? 'bi-play-fill' : 'bi-pause-fill');
       if (paused || hovered || !inView || document.hidden) return;
-      // Allow longer Arabic recommendations enough reading time.
-      const words = slides[current].querySelector('blockquote').textContent.trim().split(/\s+/).length;
-      timer = window.setTimeout(() => show((current + 1) % slides.length), Math.max(10000, words * 300));
+      timer = window.setTimeout(() => show((current + 1) % slides.length), 3000);
     }
     function show(index, announce = false) {
       current = (index + slides.length) % slides.length;
@@ -271,8 +267,6 @@
       if (announce) status.textContent = 'Testimonial ' + (current + 1) + ' of ' + slides.length + ': ' + slides[current].querySelector('figcaption strong').textContent;
       schedule();
     }
-    previous.addEventListener('click', () => { paused = true; show(current - 1, true); });
-    next.addEventListener('click', () => { paused = true; show(current + 1, true); });
     rotation.addEventListener('click', () => { paused = !paused; schedule(); });
     carousel.addEventListener('pointerenter', event => { if (event.pointerType === 'mouse') { hovered = true; schedule(); } });
     carousel.addEventListener('pointerleave', () => { hovered = false; schedule(); });
@@ -285,7 +279,7 @@
     });
     document.addEventListener('visibilitychange', schedule);
     reducedMotion.addEventListener('change', event => { if (event.matches) paused = true; schedule(); });
-    controls.append(previous, dots, next, rotation);
+    controls.append(dots, rotation);
     carousel.append(controls, status);
     carousel.classList.add('carousel-ready');
     show(0);
