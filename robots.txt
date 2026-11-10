@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://eltiganimustafa.github.io/mywebsite/sitemap.xml
