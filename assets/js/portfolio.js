@@ -14,6 +14,59 @@
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const animations = new Set();
 
+  // Keep the full role available to assistive technology while the visual label types.
+  const role = document.querySelector('.hero-role');
+  if (role) {
+    const original = role.textContent;
+    const accessible = document.createElement('span');
+    accessible.className = 'visually-hidden';
+    accessible.textContent = original;
+    const visual = document.createElement('span');
+    visual.setAttribute('aria-hidden', 'true');
+    visual.className = 'typed-role';
+    visual.textContent = original;
+    role.replaceChildren(accessible, visual);
+    const titles = ['Odoo ERP Specialist', 'Business Analyst', 'PMP® Certified Professional', 'Odoo Techno-Functional Consultant'];
+    let timer;
+    let index = 0;
+    let length = titles[0].length;
+    let deleting = true;
+    function tick() {
+      if (reducedMotion.matches || document.hidden) return;
+      const title = titles[index];
+      length += deleting ? -1 : 1;
+      visual.textContent = title.slice(0, length);
+      let delay = deleting ? 42 : 85;
+      if (length === 0) {
+        deleting = false;
+        index = (index + 1) % titles.length;
+        delay = 300;
+      } else if (!deleting && length === title.length) {
+        deleting = true;
+        delay = 2200;
+      }
+      timer = window.setTimeout(tick, delay);
+    }
+    function syncTyping() {
+      window.clearTimeout(timer);
+      role.classList.toggle('is-typing', !reducedMotion.matches);
+      if (reducedMotion.matches) {
+        visual.textContent = original;
+        return;
+      }
+      if (document.hidden) return;
+      index = 0;
+      length = titles[0].length;
+      deleting = true;
+      visual.textContent = titles[0];
+      timer = window.setTimeout(tick, 2200);
+    }
+    reducedMotion.addEventListener('change', syncTyping);
+    document.addEventListener('visibilitychange', syncTyping);
+    syncTyping();
+  }
+
+
   // Animate only on entry: content remains visible if animation is unavailable.
   function animateEntry(element, distance = 16) {
     if (reducedMotion.matches || !element.animate || element.contains(document.activeElement)) return;
@@ -63,7 +116,7 @@
     }
   });
 
-  window.matchMedia('(min-width: 921px)').addEventListener('change', event => {
+  window.matchMedia('(min-width: 1101px)').addEventListener('change', event => {
     if (event.matches) closeMenu();
   });
 
