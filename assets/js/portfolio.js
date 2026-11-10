@@ -198,9 +198,102 @@
         observer.unobserve(entry.target);
       });
     }, { threshold: 0.08 });
-    document.querySelectorAll('.section-heading, .expertise-row, .credential-card, .about-visual, .quote, .contact-grid').forEach(element => {
+    document.querySelectorAll('.section-heading, .expertise-row, .credential-card, .about-visual, .contact-grid').forEach(element => {
       // Initial content is immediately readable; reveal subsequent sections once.
       if (element.getBoundingClientRect().top >= window.innerHeight) observer.observe(element);
     });
+  }
+
+  const carousel = document.querySelector('.testimonial-carousel');
+  if (carousel) {
+    const slides = [...carousel.querySelectorAll('.quote')];
+    const controls = document.createElement('div');
+    controls.className = 'carousel-controls';
+    const status = document.createElement('span');
+    status.className = 'visually-hidden';
+    status.setAttribute('role', 'status');
+    let current = 0;
+    let timer;
+    let paused = reducedMotion.matches;
+    let hovered = false;
+    let inView = !('IntersectionObserver' in window);
+    function makeButton(className, label, icon) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = className;
+      button.setAttribute('aria-label', label);
+      if (icon) {
+        const glyph = document.createElement('i');
+        glyph.className = 'bi ' + icon;
+        glyph.setAttribute('aria-hidden', 'true');
+        button.append(glyph);
+      }
+      return button;
+    }
+    const previous = makeButton('carousel-arrow', 'Previous testimonial', 'bi-chevron-left');
+    const next = makeButton('carousel-arrow', 'Next testimonial', 'bi-chevron-right');
+    const rotation = makeButton('carousel-pause', '', 'bi-pause-fill');
+    const dots = document.createElement('div');
+    dots.className = 'carousel-dots';
+    dots.setAttribute('role', 'group');
+    dots.setAttribute('aria-label', 'Choose a testimonial');
+    const buttons = slides.map((slide, index) => {
+      slide.id = 'testimonial-' + (index + 1);
+      slide.setAttribute('role', 'group');
+      slide.setAttribute('aria-roledescription', 'slide');
+      slide.setAttribute('aria-label', (index + 1) + ' of ' + slides.length);
+      const author = slide.querySelector('figcaption strong').textContent;
+      const button = makeButton('carousel-dot', 'Show testimonial from ' + author);
+      button.setAttribute('aria-controls', slide.id);
+      button.addEventListener('click', () => { paused = true; show(index, true); });
+      dots.append(button);
+      return button;
+    });
+    function schedule() {
+      window.clearTimeout(timer);
+      rotation.setAttribute('aria-label', paused ? 'Start automatic rotation' : 'Pause automatic rotation');
+      rotation.firstElementChild.className = 'bi ' + (paused ? 'bi-play-fill' : 'bi-pause-fill');
+      if (paused || hovered || !inView || document.hidden) return;
+      // Allow longer Arabic recommendations enough reading time.
+      const words = slides[current].querySelector('blockquote').textContent.trim().split(/\s+/).length;
+      timer = window.setTimeout(() => show((current + 1) % slides.length), Math.max(10000, words * 300));
+    }
+    function show(index, announce = false) {
+      current = (index + slides.length) % slides.length;
+      slides.forEach((slide, i) => {
+        const active = i === current;
+        slide.classList.toggle('is-active', active);
+        slide.setAttribute('aria-hidden', String(!active));
+        slide.inert = !active;
+        if (active) buttons[i].setAttribute('aria-current', 'true');
+        else buttons[i].removeAttribute('aria-current');
+      });
+      if (announce) status.textContent = 'Testimonial ' + (current + 1) + ' of ' + slides.length + ': ' + slides[current].querySelector('figcaption strong').textContent;
+      schedule();
+    }
+    previous.addEventListener('click', () => { paused = true; show(current - 1, true); });
+    next.addEventListener('click', () => { paused = true; show(current + 1, true); });
+    rotation.addEventListener('click', () => { paused = !paused; schedule(); });
+    carousel.addEventListener('pointerenter', event => { if (event.pointerType === 'mouse') { hovered = true; schedule(); } });
+    carousel.addEventListener('pointerleave', () => { hovered = false; schedule(); });
+    carousel.addEventListener('focusin', event => { if (event.target !== rotation) { paused = true; schedule(); } });
+    carousel.addEventListener('keydown', event => {
+      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+      event.preventDefault();
+      paused = true;
+      show(current + (event.key === 'ArrowRight' ? 1 : -1), true);
+    });
+    document.addEventListener('visibilitychange', schedule);
+    reducedMotion.addEventListener('change', event => { if (event.matches) paused = true; schedule(); });
+    controls.append(previous, dots, next, rotation);
+    carousel.append(controls, status);
+    carousel.classList.add('carousel-ready');
+    show(0);
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(entries => {
+        inView = entries[0].isIntersecting;
+        schedule();
+      }, { threshold: 0.25 }).observe(carousel);
+    }
   }
 })();
