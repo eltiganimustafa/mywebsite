@@ -25,7 +25,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/css/portfolio.css?v=20261110-contact" rel="stylesheet">
+  <link href="assets/css/portfolio.css?v=20261110-contact-form" rel="stylesheet">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NF5LMMYWL7"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -234,21 +234,33 @@
     </section>
 
     <section id="contact" class="section contact-section" aria-labelledby="contact-title">
-      <div class="container contact-grid">
-        <div class="contact-intro">
-          <p class="contact-kicker"><i class="bi bi-chat-square-text" aria-hidden="true"></i> Let's connect</p>
-          <h2 id="contact-title">Make Odoo work<br>for your business.</h2>
-          <p class="contact-description">Need help with Odoo implementation, customization, or business analysis? Let's discuss your requirements and the next step.</p>
-          <a class="button contact-primary" href="mailto:Eltiganimustafa@gmail.com?subject=Odoo%20consulting%20enquiry"><i class="bi bi-envelope" aria-hidden="true"></i> Discuss your Odoo needs <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
-          <a class="contact-email" href="mailto:Eltiganimustafa@gmail.com">Eltiganimustafa@gmail.com</a>
-          <div class="contact-specialties" aria-label="Areas of expertise"><span>Odoo consulting</span><span>Business analysis</span><span>ERP implementation</span></div>
-        </div>
-        <div class="contact-panel">
-          <h3>Contact details</h3>
-          <p class="contact-location"><i class="bi bi-geo-alt" aria-hidden="true"></i> Riyadh, Saudi Arabia</p>
-          <a class="contact-method" href="tel:+966564814898"><span class="contact-method-icon"><i class="bi bi-telephone" aria-hidden="true"></i></span><span class="contact-method-copy"><span>Phone</span><strong dir="ltr">+966 56 481 4898</strong></span><i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
-          <a class="contact-method" href="https://www.linkedin.com/in/eltiganimustafa" target="_blank" rel="noopener noreferrer"><span class="contact-method-icon"><i class="bi bi-linkedin" aria-hidden="true"></i></span><span class="contact-method-copy"><span>Professional profile</span><strong>Connect on LinkedIn</strong></span><i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
-          <a class="contact-method" href="assets/CV_Eltigani_EN.pdf" download="CV_Eltigani_EN.pdf"><span class="contact-method-icon"><i class="bi bi-file-earmark-person" aria-hidden="true"></i></span><span class="contact-method-copy"><span>Experience &amp; qualifications</span><strong>Download my CV <span class="contact-filetype">PDF</span></strong></span><i class="bi bi-download" aria-hidden="true"></i></a>
+      <div class="container">
+        <div class="section-heading"><div><h2 id="contact-title">Get in touch</h2></div></div>
+        <div class="contact-grid">
+          <div class="contact-intro">
+            <h3>Let's discuss your Odoo needs.</h3>
+            <p>Tell me about your requirements, or send me an <a class="contact-inline-email" href="mailto:Eltiganimustafa@gmail.com">email directly</a>.</p>
+            <div class="contact-direct-links">
+              <span><i class="bi bi-geo-alt" aria-hidden="true"></i> Riyadh, Saudi Arabia</span>
+              <a href="tel:+966564814898"><i class="bi bi-telephone" aria-hidden="true"></i> <span dir="ltr">+966 56 481 4898</span></a>
+              <a href="https://www.linkedin.com/in/eltiganimustafa" target="_blank" rel="noopener noreferrer"><i class="bi bi-linkedin" aria-hidden="true"></i> Connect on LinkedIn</a>
+              <a href="assets/CV_Eltigani_EN.pdf" download="CV_Eltigani_EN.pdf"><i class="bi bi-download" aria-hidden="true"></i> Download CV</a>
+            </div>
+          </div>
+          <form id="contact-form" class="contact-form" action="https://formsubmit.co/Eltiganimustafa@gmail.com" method="POST" aria-label="Send a message to Eltigani">
+            <input type="hidden" name="_next" value="https://eltiganimustafa.github.io/mywebsite/thank-you.html">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_url" value="https://eltiganimustafa.github.io/mywebsite/#contact">
+            <div class="contact-honeypot" aria-hidden="true"><label for="contact-website">Leave this field empty</label><input id="contact-website" type="text" name="_honey" tabindex="-1" autocomplete="off"></div>
+            <div class="contact-form-row">
+              <div class="contact-field"><label class="visually-hidden" for="contact-name">Your name</label><input id="contact-name" name="name" type="text" autocomplete="name" placeholder="Your name" required maxlength="100"></div>
+              <div class="contact-field"><label class="visually-hidden" for="contact-email">Email address</label><input id="contact-email" name="email" type="email" autocomplete="email" placeholder="Email address" required maxlength="254"></div>
+            </div>
+            <div class="contact-field"><label class="visually-hidden" for="contact-subject">Subject</label><input id="contact-subject" name="_subject" type="text" placeholder="Subject" required maxlength="160"></div>
+            <div class="contact-field"><label class="visually-hidden" for="contact-message">Message</label><textarea id="contact-message" name="message" placeholder="Message" rows="6" required minlength="10" maxlength="5000"></textarea></div>
+            <button class="button button-ink contact-submit" type="submit">Send message <i class="bi bi-send" aria-hidden="true"></i></button>
+            <p class="contact-form-note">Your details are sent through <a href="https://formsubmit.co/" target="_blank" rel="noopener noreferrer">FormSubmit</a> to my inbox. A spam check may appear before submission.</p>
+          </form>
         </div>
       </div>
     </section>
@@ -260,3 +272,4 @@
   <footer class="site-footer"><div class="container footer-inner"><a class="brand footer-brand" href="#top"><span class="brand-mark" aria-hidden="true">em<span>.</span></span><span>Eltigani Mustafa Eltayeb</span></a><span>© 2026 · All rights reserved.</span><a href="#top">Back to top <i class="bi bi-arrow-up" aria-hidden="true"></i></a></div></footer>
 </body>
 </html>
+
