@@ -100,7 +100,7 @@
   let currentLink = null;
   function updateScrollState() {
     framePending = false;
-    const offset = header.getBoundingClientRect().height + 120;
+    const offset = window.matchMedia('(min-width: 1101px)').matches ? 140 : header.getBoundingClientRect().height + 120;
     const active = sections.find(({ section }) => {
       const bounds = section.getBoundingClientRect();
       return bounds.top <= offset && bounds.bottom > offset;
